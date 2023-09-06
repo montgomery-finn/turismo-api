@@ -25,6 +25,9 @@ public class Person extends BaseEntity {
     @Column(name = "birth")
     private LocalDateTime nascimento;
 
-    //senha
-    //telefon
+    @Column(name = "password")
+    private String Senha;
+
+    @Column(name = "phone")
+    private String Telefone;
 }

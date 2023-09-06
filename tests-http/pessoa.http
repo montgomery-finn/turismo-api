@@ -5,8 +5,18 @@ GET {{URL_BASE}}/pessoa
 
 
 ### Obter pessoa pelo id
-GET {{URL_BASE}}/pessoa/10
+GET {{URL_BASE}}/pessoa/5e43ee7d-4e5a-4968-be7f-29d3da0df73f
+
 
 
 ### Cadastrar 1 pessoa
-POST {{URL_BASE}}/pessoa/
+POST {{URL_BASE}}/pessoa
+Content-Type: application/json
+
+{
+    "nome": "Valentina",
+    "email": "valentina@gmail.com",
+    "nascimento": "1960-01-01T00:00:00",
+    "senha": "123456",
+    "telefone": "123456" 
+}

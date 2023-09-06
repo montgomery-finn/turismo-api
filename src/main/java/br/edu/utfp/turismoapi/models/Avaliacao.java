@@ -7,13 +7,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tb_passeio")
-public class Passeio extends BaseEntity {
-    private String descricao;
+@Table(name = "tb_avaliacao")
+public class Avaliacao extends BaseEntity {
+    private Double nota;
 }

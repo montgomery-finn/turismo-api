@@ -1,16 +1,25 @@
 package br.edu.utfp.turismoapi.controllers;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.edu.utfp.turismoapi.dto.PersonDTO;
 import br.edu.utfp.turismoapi.models.Person;
 import br.edu.utfp.turismoapi.repositories.PersonRepository;
 
@@ -22,24 +31,35 @@ public class PersonController {
     PersonRepository personRepository;
 
     @GetMapping(value = {"", "/"})
-    public String getAll() {
-        return "Aqui estão todas as pessoas";
+    public List<Person> getAll() {
+        return personRepository.findAll();
+
     }
 
     @GetMapping("/{id}")
-    public String getById(@PathVariable Long id) {
-        return "Aqui está a pessoa " + id;
+    public ResponseEntity<Object> getById(@PathVariable String id) {
+        Optional<Person> personOptional =  personRepository.findById(UUID.fromString(id));
+        
+        return personOptional.isPresent() 
+            ? ResponseEntity.ok(personOptional.get())
+            : ResponseEntity.notFound().build();
+
     }
 
-    @PostMapping("/")
-    public Person create() {
-        var person = new Person();
-        person.setNome("Luca da Silva");
-        person.setEmail("luca@email.com");
-        person.setNascimento(LocalDateTime.now());
+    @PostMapping("")
+    public ResponseEntity<Object> create(@RequestBody PersonDTO personDTO) {
+        var person = new Person(); //pessoa para persistir no DB
+        BeanUtils.copyProperties(personDTO, person);
+        
 
-        personRepository.save(person);
-        return person;
+        try {
+            return ResponseEntity.status(HttpStatus.CREATED)
+                .body(personRepository.save(person));
+        } catch(Exception exception) {
+            exception.printStackTrace();
+            return ResponseEntity.status((HttpStatus.BAD_REQUEST))
+                .body("Falha ao criar pessoa");
+        }        
     }
 
     @PutMapping("/{id}")
