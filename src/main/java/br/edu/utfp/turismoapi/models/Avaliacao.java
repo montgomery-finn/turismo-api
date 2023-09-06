@@ -1,6 +1,8 @@
 package br.edu.utfp.turismoapi.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,4 +17,9 @@ import lombok.Setter;
 @Table(name = "tb_avaliacao")
 public class Avaliacao extends BaseEntity {
     private Double nota;
+    
+    @OneToOne()
+    @JoinColumn(name = "reserva_id")
+    private Reserva reserva;
+
 }

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.utfp.turismoapi.dto.PersonDTO;
@@ -63,13 +62,59 @@ public class PersonController {
     }
 
     @PutMapping("/{id}")
-    public String update(@PathVariable Long id) {
-        return "Pessoa " + id + " atualizada";
+    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody PersonDTO personDTO) {
+        UUID uuid;
+
+        try {
+            uuid = UUID.fromString(id);
+        }
+        catch (Exception exception) {
+            return ResponseEntity.badRequest().body("Formato de UUID inválido");
+        }
+
+        var person = personRepository.findById(uuid);
+
+        if(person.isEmpty())
+            return ResponseEntity.notFound().build();
+
+        var personToUpdate = person.get();
+        BeanUtils.copyProperties(personDTO, personToUpdate);
+        personToUpdate.setUpdatedAt(LocalDateTime.now());
+
+        try {
+            return ResponseEntity.ok()
+                .body(personRepository.save(personToUpdate));
+        } catch(Exception exception) {
+            exception.printStackTrace();
+            return ResponseEntity.status((HttpStatus.BAD_REQUEST))
+                .body("Falha ao atualizar pessoa");
+        }      
     }
 
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable Long id) {
-        return "Pessoa " + id + " excluida";
+    public ResponseEntity<Object> delete(@PathVariable String id) {
+        UUID uuid;
+
+        try {
+            uuid = UUID.fromString(id);
+        }
+        catch (Exception exception) {
+            return ResponseEntity.badRequest().body("Formato de UUID inválido");
+        }
+
+        var person = personRepository.findById(uuid);
+
+        if(person.isEmpty())
+            return ResponseEntity.notFound().build();
+
+        try {
+            personRepository.delete(person.get());
+            return ResponseEntity.ok().build();
+        }
+        catch(Exception exception){
+            exception.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exception.getMessage());
+        }
     }
 }
