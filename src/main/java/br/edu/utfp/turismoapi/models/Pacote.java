@@ -26,6 +26,10 @@ import lombok.Setter;
 @Table(name = "tb_pacote")
 public class Pacote extends BaseEntity {
 
+    private String descricao;
+
+    private Double preco;
+
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "pacote")
     private List<Reserva> reservas = new ArrayList<Reserva>();
 

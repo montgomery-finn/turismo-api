@@ -1,5 +1,9 @@
 @URL_BASE=http://localhost:8080
 
+
+### Obter todas as pessoas paginado
+GET {{URL_BASE}}/pessoa/pages?size=20&page=0&sort=email&direction=DESC
+
 ### Obter todas as pessoas
 GET {{URL_BASE}}/pessoa
 
