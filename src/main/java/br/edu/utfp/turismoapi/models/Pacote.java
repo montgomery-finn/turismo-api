@@ -16,8 +16,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-//passeio e pacote é a mesma coisa
-
 @Getter
 @Setter
 @NoArgsConstructor
