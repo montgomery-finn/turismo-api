@@ -4,7 +4,7 @@
 GET {{URL_BASE}}/passeio
 
 ### Obter passeio pelo id
-GET {{URL_BASE}}/passeio/c1db6853-b6f8-479b-b934-0f20e729037e
+GET {{URL_BASE}}/passeio/32db2106-a53b-48d4-8194-e694552492e7
 
 ### Cadastrar um passeio
 POST {{URL_BASE}}/passeio
@@ -17,7 +17,7 @@ Content-Type: application/json
 }
 
 ### Atualizar um passeio
-PUT {{URL_BASE}}/passeio/c1db6853-b6f8-479b-b934-0f20e729037e
+PUT {{URL_BASE}}/passeio/e3de1066-dd32-4630-87e0-dae10f34032b
 Content-Type: application/json
 
 {
@@ -27,4 +27,4 @@ Content-Type: application/json
 }
 
 ### Deletar passeio pelo id
-DELETE {{URL_BASE}}/passeio/c1db6853-b6f8-479b-b934-0f20e729037e
+DELETE {{URL_BASE}}/passeio/e3de1066-dd32-4630-87e0-dae10f34032b

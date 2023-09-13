@@ -10,9 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import br.edu.utfp.turismoapi.dto.PasseioDTO;
 import br.edu.utfp.turismoapi.models.Passeio;
 import br.edu.utfp.turismoapi.repositories.PasseioRepository;
-import br.edu.utfp.turismoapi.repositories.PacoteRepository;
 
 @RestController
 @RequestMapping("/passeio")
@@ -20,9 +20,6 @@ public class PasseioController {
 
     @Autowired
     private PasseioRepository passeioRepository;
-
-    @Autowired
-    private PacoteRepository pacoteRepository;
 
     @GetMapping("")
     public List<Passeio> getAll() {
@@ -39,14 +36,10 @@ public class PasseioController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Object> create(@RequestBody Passeio passeio) {
-        // Certifique-se de que os pacotes associados ao passeio existem
-        passeio.getPacotes().forEach(pacote -> {
-            if (!pacoteRepository.existsById(pacote.getId())) {
-                ResponseEntity.badRequest().body("Pacote não encontrado: " + pacote.getId());
-            }
-        });
-
+    public ResponseEntity<Object> create(@RequestBody PasseioDTO passeioDTO) {
+        var passeio = new Passeio();
+        BeanUtils.copyProperties(passeioDTO, passeio);
+        
         try {
             return ResponseEntity.status(HttpStatus.CREATED).body(passeioRepository.save(passeio));
         } catch (Exception exception) {
@@ -56,7 +49,7 @@ public class PasseioController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody Passeio updatedPasseio) {
+    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody PasseioDTO passeioDTO) {
         UUID uuid;
         try {
             uuid = UUID.fromString(id);
@@ -71,14 +64,7 @@ public class PasseioController {
         }
 
         Passeio passeioToUpdate = passeioOptional.get();
-        BeanUtils.copyProperties(updatedPasseio, passeioToUpdate);
-
-        // Certifique-se de que os pacotes associados ao passeio existem
-        passeioToUpdate.getPacotes().forEach(pacote -> {
-            if (!pacoteRepository.existsById(pacote.getId())) {
-                ResponseEntity.badRequest().body("Pacote não encontrado: " + pacote.getId());
-            }
-        });
+        BeanUtils.copyProperties(passeioDTO, passeioToUpdate);
 
         try {
             return ResponseEntity.ok().body(passeioRepository.save(passeioToUpdate));
