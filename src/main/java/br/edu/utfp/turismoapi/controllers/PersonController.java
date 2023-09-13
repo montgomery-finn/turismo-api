@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.edu.utfp.turismoapi.dto.PersonDTO;
 import br.edu.utfp.turismoapi.models.Person;
 import br.edu.utfp.turismoapi.repositories.PersonRepository;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/pessoa")
@@ -59,7 +60,7 @@ public class PersonController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Object> create(@RequestBody PersonDTO personDTO) {
+    public ResponseEntity<Object> create(@Valid @RequestBody PersonDTO personDTO) {
         var person = new Person(); //pessoa para persistir no DB
         BeanUtils.copyProperties(personDTO, person);
         

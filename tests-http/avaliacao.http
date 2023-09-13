@@ -1,0 +1,25 @@
+@URL_BASE=http://localhost:8080
+
+### Obter todas as avaliações
+GET {{URL_BASE}}/avaliacao
+
+### Obter avaliação pelo id
+GET {{URL_BASE}}/avaliacao/c1db6853-b6f8-479b-b934-0f20e729037e
+
+### Cadastrar uma avaliação
+POST {{URL_BASE}}/avaliacao
+Content-Type: application/json
+{
+    "nota": 4.5
+}
+
+### Atualizar uma avaliação
+PUT {{URL_BASE}}/avaliacao/c1db6853-b6f8-479b-b934-0f20e729037e
+Content-Type: application/json
+
+{
+    "nota": 4.8
+}
+
+### Deletar avaliação pelo id
+DELETE {{URL_BASE}}/avaliacao/c1db6853-b6f8-479b-b934-0f20e729037e

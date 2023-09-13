@@ -9,7 +9,7 @@ GET {{URL_BASE}}/pessoa
 
 
 ### Obter pessoa pelo id
-GET {{URL_BASE}}/pessoa/c1db6853-b6f8-479b-b934-0f20e729037e
+GET {{URL_BASE}}/pessoa/9fa00dac-54d9-4ecb-a137-8cb9e78898f8
 
 ### Cadastrar 1 pessoa
 POST {{URL_BASE}}/pessoa
@@ -17,14 +17,14 @@ Content-Type: application/json
 
 {
     "nome": "Valentina",
-    "email": "valentina@gmail.com",
+    "email": "valentina1@gmail.com",
     "nascimento": "1960-01-01T00:00:00",
     "senha": "123456",
     "telefone": "123456" 
 }
 
 ### Atualizar 1 pessoa
-PUT {{URL_BASE}}/pessoa/c1db6853-b6f8-479b-b934-0f20e729037e
+PUT {{URL_BASE}}/pessoa/9fa00dac-54d9-4ecb-a137-8cb9e78898f8
 Content-Type: application/json
 
 {
@@ -36,4 +36,4 @@ Content-Type: application/json
 }
 
 ### Deletar pessoa pelo id
-DELETE {{URL_BASE}}/pessoa/c1db6853-b6f8-479b-b934-0f20e729037e
+DELETE {{URL_BASE}}/pessoa/1a668100-9c62-4f4d-ab91-99f87f072b00

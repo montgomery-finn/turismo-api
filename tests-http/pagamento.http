@@ -1,0 +1,26 @@
+@URL_BASE=http://localhost:8080
+
+### Obter todos os pagamentos
+GET {{URL_BASE}}/pagamento
+
+### Obter pagamento pelo id
+GET {{URL_BASE}}/pagamento/c1db6853-b6f8-479b-b934-0f20e729037e
+
+### Cadastrar um pagamento
+POST {{URL_BASE}}/pagamento
+Content-Type: application/json
+
+{
+    "valor": 100.0
+}
+
+### Atualizar um pagamento
+PUT {{URL_BASE}}/pagamento/c1db6853-b6f8-479b-b934-0f20e729037e
+Content-Type: application/json
+
+{
+    "valor": 150.0
+}
+
+### Deletar pagamento pelo id
+DELETE {{URL_BASE}}/pagamento/c1db6853-b6f8-479b-b934-0f20e729037e

@@ -1,0 +1,30 @@
+@URL_BASE=http://localhost:8080
+
+### Obter todos os passeios
+GET {{URL_BASE}}/passeio
+
+### Obter passeio pelo id
+GET {{URL_BASE}}/passeio/c1db6853-b6f8-479b-b934-0f20e729037e
+
+### Cadastrar um passeio
+POST {{URL_BASE}}/passeio
+Content-Type: application/json
+
+{
+    "destino": "Praia de Copacabana",
+    "itinerario": "Passeio à beira-mar",
+    "preco": 50.0
+}
+
+### Atualizar um passeio
+PUT {{URL_BASE}}/passeio/c1db6853-b6f8-479b-b934-0f20e729037e
+Content-Type: application/json
+
+{
+    "destino": "Praia de Ipanema",
+    "itinerario": "Passeio pelo calçadão",
+    "preco": 60.0
+}
+
+### Deletar passeio pelo id
+DELETE {{URL_BASE}}/passeio/c1db6853-b6f8-479b-b934-0f20e729037e

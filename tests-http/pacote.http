@@ -1,0 +1,28 @@
+@URL_BASE=http://localhost:8080
+
+### Obter todos os pacotes
+GET {{URL_BASE}}/pacote
+
+### Obter pacote pelo id
+GET {{URL_BASE}}/pacote/c1db6853-b6f8-479b-b934-0f20e729037e
+
+### Cadastrar um pacote
+POST {{URL_BASE}}/pacote
+Content-Type: application/json
+
+{
+    "descricao": "Pacote de Praia",
+    "preco": 500.0
+}
+
+### Atualizar um pacote
+PUT {{URL_BASE}}/pacote/c1db6853-b6f8-479b-b934-0f20e729037e
+Content-Type: application/json
+
+{
+    "descricao": "Pacote de Montanha",
+    "preco": 600.0
+}
+
+### Deletar pacote pelo id
+DELETE {{URL_BASE}}/pacote/c1db6853-b6f8-479b-b934-0f20e729037e
