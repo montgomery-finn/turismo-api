@@ -3,6 +3,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.edu.utfp.turismoapi.enums.ETipoPessoa;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -41,6 +43,7 @@ public class Person extends BaseEntity {
     @Column(name = "phone")
     private String Telefone;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "person_id")
     private List<Reserva> reservas = new ArrayList<Reserva>();

@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import br.edu.utfp.turismoapi.dto.AvaliacaoDTO;
 import br.edu.utfp.turismoapi.models.Avaliacao;
 import br.edu.utfp.turismoapi.models.Reserva;
 import br.edu.utfp.turismoapi.repositories.AvaliacaoRepository;
@@ -61,7 +62,7 @@ public class AvaliacaoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody Avaliacao updatedAvaliacao) {
+    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody AvaliacaoDTO avaliacaoDTO) {
         UUID uuid;
         try {
             uuid = UUID.fromString(id);
@@ -76,7 +77,7 @@ public class AvaliacaoController {
         }
 
         Avaliacao avaliacaoToUpdate = avaliacaoOptional.get();
-        BeanUtils.copyProperties(updatedAvaliacao, avaliacaoToUpdate);
+        BeanUtils.copyProperties(avaliacaoDTO, avaliacaoToUpdate);
         avaliacaoToUpdate.setUpdatedAt(LocalDateTime.now());
 
         try {

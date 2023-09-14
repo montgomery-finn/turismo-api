@@ -9,12 +9,16 @@ GET {{URL_BASE}}/avaliacao/c1db6853-b6f8-479b-b934-0f20e729037e
 ### Cadastrar uma avaliação
 POST {{URL_BASE}}/avaliacao
 Content-Type: application/json
+
 {
-    "nota": 4.5
+    "nota": 4.5,
+    "reserva": {
+        "id": "0df9cfa9-6315-4a62-9799-af13a8ca1c81" 
+    } 
 }
 
 ### Atualizar uma avaliação
-PUT {{URL_BASE}}/avaliacao/c1db6853-b6f8-479b-b934-0f20e729037e
+PUT {{URL_BASE}}/avaliacao/c391f705-b580-4a65-bf89-dcb34da92e85
 Content-Type: application/json
 
 {

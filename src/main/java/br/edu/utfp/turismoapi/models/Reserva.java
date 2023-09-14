@@ -1,6 +1,9 @@
 package br.edu.utfp.turismoapi.models;
 
 import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -27,9 +30,11 @@ public class Reserva extends BaseEntity {
     @JoinColumn(name = "person_id")
     private Person person;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "reserva")
     private Pagamento pagamento;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "reserva")
     private Avaliacao avaliacao;
 }

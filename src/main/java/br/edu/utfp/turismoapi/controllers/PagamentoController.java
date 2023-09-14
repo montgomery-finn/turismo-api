@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import br.edu.utfp.turismoapi.dto.PagamentoDTO;
 import br.edu.utfp.turismoapi.models.Pagamento;
 import br.edu.utfp.turismoapi.models.Reserva;
 import br.edu.utfp.turismoapi.repositories.PagamentoRepository;
@@ -62,7 +63,7 @@ public class PagamentoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody Pagamento updatedPagamento) {
+    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody PagamentoDTO pagamentoDTO) {
         UUID uuid;
         try {
             uuid = UUID.fromString(id);
@@ -77,7 +78,7 @@ public class PagamentoController {
         }
 
         Pagamento pagamentoToUpdate = pagamentoOptional.get();
-        BeanUtils.copyProperties(updatedPagamento, pagamentoToUpdate);
+        BeanUtils.copyProperties(pagamentoDTO, pagamentoToUpdate);
         pagamentoToUpdate.setUpdatedAt(LocalDateTime.now());
 
         // Certifique-se de que a reserva associada ao pagamento existe
