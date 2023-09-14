@@ -31,7 +31,7 @@ public class Pacote extends BaseEntity {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "pacote")
     private List<Reserva> reservas = new ArrayList<Reserva>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "tb_pacote_passeio",
         joinColumns = @JoinColumn(name = "pacote_id"),
         inverseJoinColumns = @JoinColumn(name = "passeio_id"))

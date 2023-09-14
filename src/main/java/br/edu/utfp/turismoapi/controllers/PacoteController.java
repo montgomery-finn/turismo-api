@@ -1,5 +1,6 @@
 package br.edu.utfp.turismoapi.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -13,7 +14,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import br.edu.utfp.turismoapi.dto.PacoteDTO;
 import br.edu.utfp.turismoapi.models.Pacote;
+import br.edu.utfp.turismoapi.models.Passeio;
 import br.edu.utfp.turismoapi.repositories.PacoteRepository;
 import br.edu.utfp.turismoapi.repositories.PasseioRepository;
 
@@ -42,13 +45,12 @@ public class PacoteController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Object> create(@RequestBody Pacote pacote) {
-        // Certifique-se de que os passeios associados ao pacote existem
-        pacote.getPasseios().forEach(passeio -> {
-            if (!passeioRepository.existsById(passeio.getId())) {
-                ResponseEntity.badRequest().body("Passeio não encontrado: " + passeio.getId());
-            }
-        });
+    public ResponseEntity<Object> create(@RequestBody PacoteDTO pacoteDTO) {
+            Pacote pacote = new Pacote();
+            BeanUtils.copyProperties(pacoteDTO, pacote);
+
+            List<Passeio> passeios = passeioRepository.findAllById(pacoteDTO.getPasseiosIds());
+            pacote.setPasseios(passeios);
 
         try {
             return ResponseEntity.status(HttpStatus.CREATED).body(pacoteRepository.save(pacote));

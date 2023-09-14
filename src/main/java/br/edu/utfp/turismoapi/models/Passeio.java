@@ -2,7 +2,10 @@ package br.edu.utfp.turismoapi.models;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
@@ -26,7 +29,8 @@ public class Passeio extends BaseEntity {
 
     private Double preco;
 
-    @ManyToMany
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "tb_pacote_passeio",
         joinColumns = @JoinColumn(name = "passeio_id"),
         inverseJoinColumns = @JoinColumn(name = "pacote_id"))

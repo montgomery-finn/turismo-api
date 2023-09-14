@@ -12,7 +12,8 @@ Content-Type: application/json
 
 {
     "descricao": "Pacote de Praia",
-    "preco": 500.0
+    "preco": 500.0,
+    "passeiosIds" : ["d03b85ce-dc43-4793-b2cf-569102add1c2"]
 }
 
 ### Atualizar um pacote
@@ -25,4 +26,4 @@ Content-Type: application/json
 }
 
 ### Deletar pacote pelo id
-DELETE {{URL_BASE}}/pacote/c1db6853-b6f8-479b-b934-0f20e729037e
+DELETE {{URL_BASE}}/pacote/6110d74f-bef1-476e-8635-7c92c35bb6b4
