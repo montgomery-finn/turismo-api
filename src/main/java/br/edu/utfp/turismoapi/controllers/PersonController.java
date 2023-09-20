@@ -1,6 +1,7 @@
 package br.edu.utfp.turismoapi.controllers;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,7 +32,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.utfp.turismoapi.dto.PersonDTO;
 import br.edu.utfp.turismoapi.models.Person;
+import br.edu.utfp.turismoapi.models.RoleName;
 import br.edu.utfp.turismoapi.repositories.PersonRepository;
+import br.edu.utfp.turismoapi.repositories.RoleRepository;
 import jakarta.validation.Valid;
 
 @RestController
@@ -39,6 +43,12 @@ public class PersonController {
     
     @Autowired
     PersonRepository personRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/pages")
     public ResponseEntity<Page<Person>> getAllPage(
@@ -67,10 +77,26 @@ public class PersonController {
 
     @PostMapping("")
     public ResponseEntity<Object> create(@Valid @RequestBody PersonDTO personDTO) {
-        var person = new Person(); //pessoa para persistir no DB
-        BeanUtils.copyProperties(personDTO, person);
         
+        if (this.personRepository.existsByEmail(personDTO.getEmail())) {
+            return ResponseEntity
+                    .status(HttpStatus.SEE_OTHER)
+                    .body("Conflict: E-mail exists.");
+        }
+        
+        var person = new Person();
+        BeanUtils.copyProperties(personDTO, person);
 
+        LocalDateTime now = LocalDateTime.now(ZoneId.of("UTC"));
+        person.setCreatedAt(now);
+        person.setUpdatedAt(now);
+        person.setPassword(passwordEncoder.encode(personDTO.getPassword()));
+
+        // Adicionando o papel padrão para a pessoa
+        // var role = roleRepository.findByName(RoleName.USER);
+        // if (role.isPresent())
+        //     person.addRole(role.get());
+        
         try {
             return ResponseEntity.status(HttpStatus.CREATED)
                 .body(personRepository.save(person));

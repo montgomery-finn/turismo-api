@@ -19,8 +19,7 @@ Content-Type: application/json
     "nome": "Valentina",
     "email": "valentina1@gmail.com",
     "nascimento": "1960-01-01T00:00:00",
-    "senha": "123456",
-    "telefone": "123456" 
+    "password": "123456"
 }
 
 ### Atualizar 1 pessoa
@@ -32,7 +31,6 @@ Content-Type: application/json
     "email": "jose@gmail.com",
     "nascimento": "1960-01-01T00:00:00",
     "senha": "123456",
-    "telefone": "123456" 
 }
 
 ### Deletar pessoa pelo id

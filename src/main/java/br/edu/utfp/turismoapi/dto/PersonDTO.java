@@ -29,6 +29,7 @@ public class PersonDTO {
     @PastOrPresent
     private LocalDateTime nascimento;
 
-    //senha
-    //telefon
+    @NotBlank(message = "Senha é obrigatória")
+    @Size(min = 2, max = 100, message = "A senha deve ter entre 2 e 100 caracteres")
+    private String password;
 }

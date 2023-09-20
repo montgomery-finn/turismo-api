@@ -5,6 +5,6 @@ POST {{URL_BASE}}/auth
 Content-Type: application/json
 
 {
-    "username": "Juca",
-    "password": "1234"
+    "username": "valentina1@gmail.com",
+    "password": "123456"
 }
