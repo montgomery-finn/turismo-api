@@ -3,13 +3,17 @@
 
 ### Obter todas as pessoas paginado
 GET {{URL_BASE}}/pessoa/pages?size=20&page=0&sort=email&direction=DESC
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJpZCI6ImMxNDU0ZGU3LTk4NGMtNDBjMC1hYTdkLTRjNDU1YjI1Mjc3NSIsInVzZXJuYW1lIjoidmFsZW50aW5hMUBnbWFpbC5jb20iLCJpYXQiOjE2OTUyMzE0MjksImV4cCI6MTY5NTIzNTAyOSwiaXNzIjoiVVRGUFIifQ.etmTeD-QhBLFic7yS72yk5G7MhEI4DIKLqJnzOzuE-c
 
 ### Obter todas as pessoas
 GET {{URL_BASE}}/pessoa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJpZCI6ImMxNDU0ZGU3LTk4NGMtNDBjMC1hYTdkLTRjNDU1YjI1Mjc3NSIsInVzZXJuYW1lIjoidmFsZW50aW5hMUBnbWFpbC5jb20iLCJpYXQiOjE2OTUyMzE0MjksImV4cCI6MTY5NTIzNTAyOSwiaXNzIjoiVVRGUFIifQ.etmTeD-QhBLFic7yS72yk5G7MhEI4DIKLqJnzOzuE-c
+
 
 
 ### Obter pessoa pelo id
-GET {{URL_BASE}}/pessoa/9fa00dac-54d9-4ecb-a137-8cb9e78898f8
+GET {{URL_BASE}}/pessoa/c1454de7-984c-40c0-aa7d-4c455b252775
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJpZCI6ImMxNDU0ZGU3LTk4NGMtNDBjMC1hYTdkLTRjNDU1YjI1Mjc3NSIsInVzZXJuYW1lIjoidmFsZW50aW5hMUBnbWFpbC5jb20iLCJpYXQiOjE2OTUyMzE0MjksImV4cCI6MTY5NTIzNTAyOSwiaXNzIjoiVVRGUFIifQ.etmTeD-QhBLFic7yS72yk5G7MhEI4DIKLqJnzOzuE-c
 
 ### Cadastrar 1 pessoa
 POST {{URL_BASE}}/pessoa
@@ -23,15 +27,17 @@ Content-Type: application/json
 }
 
 ### Atualizar 1 pessoa
-PUT {{URL_BASE}}/pessoa/9fa00dac-54d9-4ecb-a137-8cb9e78898f8
+PUT {{URL_BASE}}/pessoa/c1454de7-984c-40c0-aa7d-4c455b252775
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJpZCI6ImMxNDU0ZGU3LTk4NGMtNDBjMC1hYTdkLTRjNDU1YjI1Mjc3NSIsInVzZXJuYW1lIjoidmFsZW50aW5hMUBnbWFpbC5jb20iLCJpYXQiOjE2OTUyMzE0MjksImV4cCI6MTY5NTIzNTAyOSwiaXNzIjoiVVRGUFIifQ.etmTeD-QhBLFic7yS72yk5G7MhEI4DIKLqJnzOzuE-c
 Content-Type: application/json
 
 {
     "nome": "Jose",
     "email": "jose@gmail.com",
     "nascimento": "1960-01-01T00:00:00",
-    "senha": "123456",
+    "password": "123456"
 }
 
 ### Deletar pessoa pelo id
-DELETE {{URL_BASE}}/pessoa/1a668100-9c62-4f4d-ab91-99f87f072b00
+DELETE {{URL_BASE}}/pessoa/c1454de7-984c-40c0-aa7d-4c455b252775
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJpZCI6ImMxNDU0ZGU3LTk4NGMtNDBjMC1hYTdkLTRjNDU1YjI1Mjc3NSIsInVzZXJuYW1lIjoidmFsZW50aW5hMUBnbWFpbC5jb20iLCJpYXQiOjE2OTUyMzE0MjksImV4cCI6MTY5NTIzNTAyOSwiaXNzIjoiVVRGUFIifQ.etmTeD-QhBLFic7yS72yk5G7MhEI4DIKLqJnzOzuE-c

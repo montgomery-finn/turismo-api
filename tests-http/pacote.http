@@ -4,20 +4,23 @@
 GET {{URL_BASE}}/pacote
 
 ### Obter pacote pelo id
-GET {{URL_BASE}}/pacote/c1db6853-b6f8-479b-b934-0f20e729037e
+GET {{URL_BASE}}/pacote/7097bcc7-1fc3-4813-b70a-5cff770cff3a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJpZCI6IjhmMTAzNjNmLTMwMzYtNDgwNS1iMTRmLWQxODVkNzM3NzUzYSIsInVzZXJuYW1lIjoidmFsZW50aW5hMUBnbWFpbC5jb20iLCJpYXQiOjE2OTUyMzIxMzEsImV4cCI6MTY5NTIzNTczMSwiaXNzIjoiVVRGUFIifQ.A0ynpAczFkRLLefO7eW8zxUaoZCAcBLDy5NMd_q1ZQs
 
 ### Cadastrar um pacote
 POST {{URL_BASE}}/pacote
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJpZCI6IjhmMTAzNjNmLTMwMzYtNDgwNS1iMTRmLWQxODVkNzM3NzUzYSIsInVzZXJuYW1lIjoidmFsZW50aW5hMUBnbWFpbC5jb20iLCJpYXQiOjE2OTUyMzIxMzEsImV4cCI6MTY5NTIzNTczMSwiaXNzIjoiVVRGUFIifQ.A0ynpAczFkRLLefO7eW8zxUaoZCAcBLDy5NMd_q1ZQs
 Content-Type: application/json
 
 {
     "descricao": "Pacote de Praia",
     "preco": 500.0,
-    "passeiosIds" : ["d03b85ce-dc43-4793-b2cf-569102add1c2"]
+    "passeiosIds" : ["9ec90033-acc8-4ea1-ad5e-1cf57c1f74ad"]
 }
 
 ### Atualizar um pacote
-PUT {{URL_BASE}}/pacote/c1db6853-b6f8-479b-b934-0f20e729037e
+PUT {{URL_BASE}}/pacote/7097bcc7-1fc3-4813-b70a-5cff770cff3a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJpZCI6IjhmMTAzNjNmLTMwMzYtNDgwNS1iMTRmLWQxODVkNzM3NzUzYSIsInVzZXJuYW1lIjoidmFsZW50aW5hMUBnbWFpbC5jb20iLCJpYXQiOjE2OTUyMzIxMzEsImV4cCI6MTY5NTIzNTczMSwiaXNzIjoiVVRGUFIifQ.A0ynpAczFkRLLefO7eW8zxUaoZCAcBLDy5NMd_q1ZQs
 Content-Type: application/json
 
 {

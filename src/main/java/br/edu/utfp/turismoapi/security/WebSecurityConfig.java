@@ -47,7 +47,8 @@ public class WebSecurityConfig {
         // Set permissions on endpoints
         http.authorizeHttpRequests()
             .requestMatchers(HttpMethod.POST, "/pessoa").permitAll()            
-            .requestMatchers(HttpMethod.POST, "/auth").permitAll()
+            .requestMatchers(HttpMethod.POST, "/auth").permitAll()            
+            .requestMatchers(HttpMethod.GET, "/pacote").permitAll()
             .anyRequest().authenticated();
                 // .requestMatchers(HttpMethod.POST, "/pessoa").permitAll()                
                 // .requestMatchers(HttpMethod.POST, "/pacote").permitAll()
