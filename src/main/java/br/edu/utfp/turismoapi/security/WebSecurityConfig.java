@@ -44,14 +44,20 @@ public class WebSecurityConfig {
                                             ex.getMessage());
                                 }));
 
-        // Set permissions on endpoints
-        http.authorizeHttpRequests()
-            .requestMatchers(HttpMethod.POST, "/pessoa").permitAll()            
+        http.authorizeHttpRequests(authorize -> authorize
+            .requestMatchers(HttpMethod.GET, "/api-docs/**").permitAll()       
+            .requestMatchers(HttpMethod.GET, "/swagger-ui/**").permitAll()            
+            .requestMatchers(HttpMethod.GET, "/index.html").permitAll()            
+            .requestMatchers(HttpMethod.GET, "/").permitAll()            
+
+            .requestMatchers(HttpMethod.POST, "/pessoa").permitAll()                
             .requestMatchers(HttpMethod.POST, "/auth").permitAll()            
             .requestMatchers(HttpMethod.GET, "/pacote").permitAll()
-            .anyRequest().authenticated();
+            .anyRequest().authenticated()
                 // .requestMatchers(HttpMethod.POST, "/pessoa").permitAll()                
                 // .requestMatchers(HttpMethod.POST, "/pacote").permitAll()
+        );
+        
 
         // Add JWT token filter
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
