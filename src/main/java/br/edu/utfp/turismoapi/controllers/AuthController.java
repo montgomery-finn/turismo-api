@@ -70,7 +70,7 @@ public class AuthController {
             String token = jwtUtil.generateToken(claims, jwtSecret, jwtExpires);
 
             var res = new HashMap<String, Object>();
-            res.put("jwt-token", token);
+            res.put("token", token);
             res.put("user", user);
             res.put("issuedIn", now);
             res.put("expiresIn", now.plus(jwtExpires, ChronoUnit.SECONDS));

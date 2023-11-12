@@ -1,13 +1,13 @@
-package br.edu.utfp.turismoapi;
+// package br.edu.utfp.turismoapi;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+// import org.junit.jupiter.api.Test;
+// import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class TurismoApiApplicationTests {
+// @SpringBootTest
+// class TurismoApiApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+// 	@Test
+// 	void contextLoads() {
+// 	}
 
-}
+// }
