@@ -61,7 +61,7 @@ public class PacoteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody Pacote updatedPacote) {
+    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody PacoteDTO pacoteDTO) {
         UUID uuid;
         try {
             uuid = UUID.fromString(id);
@@ -76,15 +76,13 @@ public class PacoteController {
         }
 
         Pacote pacoteToUpdate = pacoteOptional.get();
-        BeanUtils.copyProperties(updatedPacote, pacoteToUpdate);
+        pacoteToUpdate.setDescricao(pacoteDTO.getDescricao());
+        pacoteToUpdate.setPreco(pacoteDTO.getPreco());
+        
+        List<Passeio> passeios = passeioRepository.findAllById(pacoteDTO.getPasseiosIds());
+        pacoteToUpdate.setPasseios(passeios);
+        
         pacoteToUpdate.setUpdatedAt(LocalDateTime.now());
-
-        // Certifique-se de que os passeios associados ao pacote existem
-        pacoteToUpdate.getPasseios().forEach(passeio -> {
-            if (!passeioRepository.existsById(passeio.getId())) {
-                ResponseEntity.badRequest().body("Passeio não encontrado: " + passeio.getId());
-            }
-        });
 
         try {
             return ResponseEntity.ok().body(pacoteRepository.save(pacoteToUpdate));

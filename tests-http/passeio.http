@@ -2,12 +2,16 @@
 
 ### Obter todos os passeios
 GET {{URL_BASE}}/passeio
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJpZCI6IjhmMTAzNjNmLTMwMzYtNDgwNS1iMTRmLWQxODVkNzM3NzUzYSIsInVzZXJuYW1lIjoidmFsZW50aW5hMUBnbWFpbC5jb20iLCJpYXQiOjE2OTk4OTI3MjEsImV4cCI6MTY5OTg5NjMyMSwiaXNzIjoiVVRGUFIifQ.8JtXrGlPJzIcPlqr1JFoNM6oHaT6GprD0TCggOwjUU8
+
 
 ### Obter passeio pelo id
-GET {{URL_BASE}}/passeio/994e2114-2fd9-40e0-8eb5-d17435cd4426
+GET {{URL_BASE}}/passeio/2b0f4946-c131-44e5-9dc9-2c3dfce5e370
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJpZCI6IjhmMTAzNjNmLTMwMzYtNDgwNS1iMTRmLWQxODVkNzM3NzUzYSIsInVzZXJuYW1lIjoidmFsZW50aW5hMUBnbWFpbC5jb20iLCJpYXQiOjE2OTk4OTI3MjEsImV4cCI6MTY5OTg5NjMyMSwiaXNzIjoiVVRGUFIifQ.8JtXrGlPJzIcPlqr1JFoNM6oHaT6GprD0TCggOwjUU8
 
 ### Cadastrar um passeio
 POST {{URL_BASE}}/passeio
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJpZCI6IjhmMTAzNjNmLTMwMzYtNDgwNS1iMTRmLWQxODVkNzM3NzUzYSIsInVzZXJuYW1lIjoidmFsZW50aW5hMUBnbWFpbC5jb20iLCJpYXQiOjE2OTk4ODI1MzYsImV4cCI6MTY5OTg4NjEzNiwiaXNzIjoiVVRGUFIifQ.YCr_LhtCjsFXWGwsFUvivDwRjg3Nyb0_E7N4auzvNLM
 Content-Type: application/json
 
 {
@@ -17,7 +21,8 @@ Content-Type: application/json
 }
 
 ### Atualizar um passeio
-PUT {{URL_BASE}}/passeio/994e2114-2fd9-40e0-8eb5-d17435cd4426
+PUT {{URL_BASE}}/passeio/2b0f4946-c131-44e5-9dc9-2c3dfce5e370
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJpZCI6IjhmMTAzNjNmLTMwMzYtNDgwNS1iMTRmLWQxODVkNzM3NzUzYSIsInVzZXJuYW1lIjoidmFsZW50aW5hMUBnbWFpbC5jb20iLCJpYXQiOjE2OTk4OTI3MjEsImV4cCI6MTY5OTg5NjMyMSwiaXNzIjoiVVRGUFIifQ.8JtXrGlPJzIcPlqr1JFoNM6oHaT6GprD0TCggOwjUU8
 Content-Type: application/json
 
 {
@@ -27,4 +32,5 @@ Content-Type: application/json
 }
 
 ### Deletar passeio pelo id
-DELETE {{URL_BASE}}/passeio/994e2114-2fd9-40e0-8eb5-d17435cd4426
+DELETE {{URL_BASE}}/passeio/397e0894-ec13-469d-bc8f-affc733bd1fc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJpZCI6IjhmMTAzNjNmLTMwMzYtNDgwNS1iMTRmLWQxODVkNzM3NzUzYSIsInVzZXJuYW1lIjoidmFsZW50aW5hMUBnbWFpbC5jb20iLCJpYXQiOjE2OTk4ODI1MzYsImV4cCI6MTY5OTg4NjEzNiwiaXNzIjoiVVRGUFIifQ.YCr_LhtCjsFXWGwsFUvivDwRjg3Nyb0_E7N4auzvNLM

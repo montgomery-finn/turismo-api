@@ -61,10 +61,25 @@ public class WebSecurityConfig {
             .requestMatchers(HttpMethod.GET, "/index.html").permitAll()            
             .requestMatchers(HttpMethod.GET, "/").permitAll()            
 
-            .requestMatchers(HttpMethod.POST, "/pessoa").permitAll()                
-            .requestMatchers(HttpMethod.POST, "/auth").permitAll()            
-            .requestMatchers(HttpMethod.GET, "/pacote").permitAll()         
-            .requestMatchers(HttpMethod.GET, "/passeio").permitAll());
+            .requestMatchers(HttpMethod.POST, "/pessoa").permitAll()          
+            .requestMatchers(HttpMethod.GET, "/pessoa").authenticated()
+            .requestMatchers(HttpMethod.DELETE, "/pessoa/**").authenticated()
+
+            .requestMatchers(HttpMethod.POST, "/auth").permitAll() 
+                       
+            .requestMatchers(HttpMethod.GET, "/pacote/**").permitAll()         
+            .requestMatchers(HttpMethod.POST, "/pacote").authenticated()
+            .requestMatchers(HttpMethod.PUT, "/pacote/**").authenticated()
+            .requestMatchers(HttpMethod.DELETE, "/pacote/**").authenticated()
+
+            .requestMatchers(HttpMethod.GET, "/passeio/**").authenticated()
+            .requestMatchers(HttpMethod.PUT, "/passeio/**").authenticated()
+
+            .requestMatchers(HttpMethod.POST, "/passeio").authenticated()
+            .requestMatchers(HttpMethod.DELETE, "/passeio/**").authenticated()
+            )
+            
+            ;
 
         // Add JWT token filter
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
