@@ -2,21 +2,25 @@
 
 ### Obter todas as reservas
 GET {{URL_BASE}}/reserva
+Authorization: BearerAuthorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJpZCI6IjhmMTAzNjNmLTMwMzYtNDgwNS1iMTRmLWQxODVkNzM3NzUzYSIsInVzZXJuYW1lIjoidmFsZW50aW5hMUBnbWFpbC5jb20iLCJpYXQiOjE2OTk5ODU0NDAsImV4cCI6MTY5OTk4OTA0MCwiaXNzIjoiVVRGUFIifQ.Nu51Jk9Q93T4dKwisOO5LRfHzUklFuKRnDTQWjV3j6A
+ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJpZCI6IjhmMTAzNjNmLTMwMzYtNDgwNS1iMTRmLWQxODVkNzM3NzUzYSIsInVzZXJuYW1lIjoidmFsZW50aW5hMUBnbWFpbC5jb20iLCJpYXQiOjE2OTk5ODU0NDAsImV4cCI6MTY5OTk4OTA0MCwiaXNzIjoiVVRGUFIifQ.Nu51Jk9Q93T4dKwisOO5LRfHzUklFuKRnDTQWjV3j6A
+
 
 ### Obter reserva pelo id
 GET {{URL_BASE}}/reserva/c1db6853-b6f8-479b-b934-0f20e729037e
 
 ### Cadastrar uma reserva
 POST {{URL_BASE}}/reserva
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJpZCI6IjhmMTAzNjNmLTMwMzYtNDgwNS1iMTRmLWQxODVkNzM3NzUzYSIsInVzZXJuYW1lIjoidmFsZW50aW5hMUBnbWFpbC5jb20iLCJpYXQiOjE2OTk5ODk4NjEsImV4cCI6MTY5OTk5MzQ2MSwiaXNzIjoiVVRGUFIifQ.YPldGJMk6W_YwfykgSwWcy6bAbJOX350TcI04O_eI98
 Content-Type: application/json
 
 {
     "data": "2023-09-30T14:30:00",
     "pacote": {
-        "id": "e67fa705-0e16-43c4-820b-70c6b5e98a5c"
+        "id": "6facdf63-51e0-4f97-97b2-af8c0a4c786d"
     },
     "person": {
-        "id": "b173bbdf-df2a-4b9d-9151-c28d298772a1"
+        "id": "801184ca-349b-4320-9487-05bf3e17cc5e"
     }
 }
 

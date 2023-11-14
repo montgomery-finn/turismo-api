@@ -62,7 +62,7 @@ public class WebSecurityConfig {
             .requestMatchers(HttpMethod.GET, "/").permitAll()            
 
             .requestMatchers(HttpMethod.POST, "/pessoa").permitAll()          
-            .requestMatchers(HttpMethod.GET, "/pessoa").authenticated()
+            .requestMatchers(HttpMethod.GET, "/pessoa/**").authenticated()
             .requestMatchers(HttpMethod.DELETE, "/pessoa/**").authenticated()
 
             .requestMatchers(HttpMethod.POST, "/auth").permitAll() 
@@ -77,6 +77,13 @@ public class WebSecurityConfig {
 
             .requestMatchers(HttpMethod.POST, "/passeio").authenticated()
             .requestMatchers(HttpMethod.DELETE, "/passeio/**").authenticated()
+
+            .requestMatchers(HttpMethod.GET, "/reserva/**").authenticated()
+            .requestMatchers(HttpMethod.POST, "/reserva").authenticated()
+            .requestMatchers(HttpMethod.DELETE, "/reserva/**").authenticated()            
+            .requestMatchers(HttpMethod.PUT, "/reserva/**").authenticated()
+
+
             )
             
             ;
