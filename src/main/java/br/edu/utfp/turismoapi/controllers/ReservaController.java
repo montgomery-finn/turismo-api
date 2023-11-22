@@ -52,6 +52,13 @@ public class ReservaController {
                 : ResponseEntity.notFound().build();
     }
 
+    @GetMapping("/getByUser/{userId}")
+    public List<Reserva> getByUser(@PathVariable String userId) {
+        var person = personRepository.findById(UUID.fromString(userId));
+
+        return reservaRepository.findByPerson(person.get());
+    }
+
     @PostMapping("")
     public ResponseEntity<Object> create(@RequestBody Reserva reserva) {
         // Certifique-se de que o pacote associado à reserva existe
