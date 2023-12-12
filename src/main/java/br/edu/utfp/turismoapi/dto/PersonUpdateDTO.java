@@ -17,7 +17,7 @@ import br.edu.utfp.turismoapi.enums.ETipoPessoa;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class PersonDTO {
+public class PersonUpdateDTO {
     
     @NotBlank(message = "Nome é obrigatório")
     @Size(min = 2, max = 100, message = "O nome deve ter entre 2 e 100 caracteres")
@@ -29,10 +29,6 @@ public class PersonDTO {
 
     @PastOrPresent
     private LocalDateTime nascimento;
-
-    @NotBlank(message = "Senha é obrigatória")
-    @Size(min = 2, max = 100, message = "A senha deve ter entre 2 e 100 caracteres")
-    private String password;
 
     @NotBlank(message = "Selecione o tipo")
     private ETipoPessoa tipo;

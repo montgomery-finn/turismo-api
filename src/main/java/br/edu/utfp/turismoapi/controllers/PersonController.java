@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.utfp.turismoapi.dto.PersonDTO;
+import br.edu.utfp.turismoapi.dto.PersonUpdateDTO;
 import br.edu.utfp.turismoapi.models.Person;
 import br.edu.utfp.turismoapi.models.RoleName;
 import br.edu.utfp.turismoapi.repositories.PersonRepository;
@@ -76,7 +77,7 @@ public class PersonController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Object> create(@Valid @RequestBody PersonDTO personDTO) {
+    public ResponseEntity<Object> create(@RequestBody PersonDTO personDTO) {
         
         if (this.personRepository.existsByEmail(personDTO.getEmail())) {
             return ResponseEntity
@@ -108,7 +109,7 @@ public class PersonController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody PersonDTO personDTO) {
+    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody PersonUpdateDTO personDTO) {
         UUID uuid;
 
         try {
