@@ -78,7 +78,7 @@ public class WebSecurityConfig {
             .requestMatchers(HttpMethod.POST, "/passeio").authenticated()
             .requestMatchers(HttpMethod.DELETE, "/passeio/**").authenticated()
 
-            .requestMatchers(HttpMethod.GET, "/reserva/**").permitAll()
+            .requestMatchers(HttpMethod.GET, "/reserva/**").authenticated()
             .requestMatchers(HttpMethod.POST, "/reserva").authenticated()
             .requestMatchers(HttpMethod.DELETE, "/reserva/**").authenticated()            
             .requestMatchers(HttpMethod.PUT, "/reserva/**").authenticated()

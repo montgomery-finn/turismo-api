@@ -1,10 +1,10 @@
-@URL_BASE=http://localhost:8080
+@URL_BASE=http://172.20.222.48:8080
 
 
 POST {{URL_BASE}}/auth
 Content-Type: application/json
 
 {
-    "username": "valentina@email.com",
+    "username": "valentina@gmail.com",
     "password": "123456"
 }
